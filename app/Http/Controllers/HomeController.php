@@ -31,10 +31,10 @@ class HomeController extends Controller
         $users_rol_1_and_2 = User::with('role')->where('role_id', 1)->orWhere('role_id', 2)->get();
         
         // Los permisos que se tienen del rol 1
-        $role_1 = Role::where('name', 'client')->with('permission')->first();
+        $role_1 = Role::where('id', 1)->with('permission')->first();
 
         // Los usuarios y el rol que tienen el permiso 2
-        $permission_2 = Permission::where('permission','add_users')->with('role')->first();
+        $permission_2 = Permission::where('id', 2)->with('role')->first();
         $id_roles = [];
         foreach($permission_2->role as $role){
             array_push($id_roles, $role->id);
